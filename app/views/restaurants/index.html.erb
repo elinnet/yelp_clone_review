@@ -4,7 +4,7 @@
     <% @restaurants.map do |restaurant| %>
       <p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
       <p><%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %></p>
-
+      <p><%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></p>
     <% end %>
   <% else %>
     No restaurants yet
