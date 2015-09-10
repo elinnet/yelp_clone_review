@@ -1,6 +1,6 @@
 
 
-<%= form_for Restaurant.new do |restaurantqwe| %>
+<%= form_for @restaurants do |restaurant| %>
   <%= restaurant.label :name %>
   <%= restaurant.text_field :name %>
   <%= restaurant.submit "Create Restaurant" %>
