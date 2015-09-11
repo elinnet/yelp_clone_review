@@ -1,14 +1,26 @@
 
-
   <% if @restaurants.any? %>
     <% @restaurants.map do |restaurant| %>
       <p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
       <p><%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %></p>
       <p><%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></p>
       <p><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %></p>
+
+        <% if restaurant.reviews.any? %>
+          <ul>
+          <% restaurant.reviews.map do |review| %>
+            <li>
+              <%= review.thoughts %>,
+              <%= review.rating %>/5
+            </li>
+          <% end %>
+          </ul>
+        <% else %>
+          <p>No reviews</p>
+        <% end %>
+      <% end %>
+    <% else %>
+        <p>No restaurants yet</p>
     <% end %>
-  <% else %>
-    No restaurants yet
-  <% end %>
 
 <%= link_to 'Add a restaurant', new_restaurant_path %>

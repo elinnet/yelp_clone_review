@@ -8,14 +8,13 @@ class ReviewsController < ApplicationController
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
     @restaurant.reviews.create(review_params)
-#why reviews?
     redirect_to '/restaurants'
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:thoughs,:rating)
+    params.require(:review).permit(:thoughts,:rating)
   end
 
 end
