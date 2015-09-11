@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'reviewing' do
+feature 'reviewing restaurants' do
   before {Restaurant.create name: 'KFC'}
 
     scenario 'users can add reviews' do
@@ -14,4 +14,5 @@ feature 'reviewing' do
       expect(page).to have_content 'Not too bad'
     end
 
+  
 end
