@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
+
+gem "dynamic_form"
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -28,6 +30,8 @@ gem 'pry-rails', :group => :development
 gem 'shoulda'
 
 
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -40,6 +44,7 @@ gem 'shoulda'
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-collection_matchers'
 end
 
 group :development, :test do

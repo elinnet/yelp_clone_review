@@ -57,6 +57,7 @@ GEM
     coffee-script-source (1.9.1.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
+    dynamic_form (1.1.4)
     erubis (2.7.0)
     execjs (2.6.0)
     globalid (0.3.6)
@@ -117,6 +118,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -183,11 +186,13 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.1.0)
+  dynamic_form
   jbuilder (~> 2.0)
   jquery-rails
   pg
   pry-rails
   rails (= 4.2.4)
+  rspec-collection_matchers
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
