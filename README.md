@@ -1,4 +1,4 @@
-##Yelp clone application - Week 8 project at Makers Academy
+##Yelp clone application. Week 8 project at Makers Academy
 
 A Yelp clone that lets users view reviewed restaurants and create/edit new restaurant listings.
 
@@ -25,6 +25,6 @@ Open your browser on http://localhost:3000/
 
 ## How to test it
 
-cd Yelp
+cd yelp_clone_review
 bundle install
 rspec
