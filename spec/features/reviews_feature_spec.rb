@@ -14,5 +14,5 @@ feature 'reviewing restaurants' do
       expect(page).to have_content 'Not too bad'
     end
 
-  
+
 end

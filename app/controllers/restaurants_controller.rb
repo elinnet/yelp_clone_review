@@ -28,10 +28,8 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    #raise params.inspect
-    #save the new name
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.update!(restaurant_params)
+    @restaurant.update(restaurant_params)
     redirect_to restaurants_path
   end
 
