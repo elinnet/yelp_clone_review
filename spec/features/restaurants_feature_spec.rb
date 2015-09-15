@@ -66,18 +66,36 @@ feature 'restaurants' do
 
   context 'updating restaurants' do
 
-    before {Restaurant.create(name:'KFC')}
-
-    scenario 'lets a user update restaurant details' do
+    before do
+      user = FactoryGirl.create(:user)
       login_as(user, :scope => :user)
-      visit '/restaurants'
-      click_link 'Edit KFC'
-      fill_in 'Name', with: 'Kentucky Fried Chicken'
-      click_button 'Update Restaurant'
-      expect(page).to have_content 'Kentucky Fried Chicken'
-      expect(current_path).to eq '/restaurants'
+      Restaurant.create name: 'KFC', user_id: user.id
+      logout(:user)
+    end
+
+    scenario 'users can only edit restaurants/reviews they have created themselves' do
+      another_user = FactoryGirl.create(:user)
+      login_as(another_user, :scope => :user)
+      visit ('/')
+      click_link('Edit KFC')
+      expect(page).to have_content 'KFC can only be edited by creator'
     end
   end
+
+
+
+    # before {Restaurant.create(name:'KFC')}
+    #
+    # scenario 'lets a user update restaurant details' do
+    #   login_as(user, :scope => :user)
+    #   visit '/restaurants'
+    #   click_link 'Edit KFC'
+    #   fill_in 'Name', with: 'Kentucky Fried Chicken'
+    #   click_button 'Update Restaurant'
+    #   expect(page).to have_content 'Kentucky Fried Chicken'
+    #   expect(current_path).to eq '/restaurants'
+    # end
+
 
   context 'deleting restaurants' do
 

@@ -6,7 +6,6 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
-
   end
 
   def new
@@ -15,6 +14,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.user_id = current_user.id
     if @restaurant.save
       redirect_to restaurants_path
     else
@@ -27,9 +27,16 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
+
     @restaurant = Restaurant.find(params[:id])
-    #
-    # if @restaurant.
+
+    if @restaurant.user_id === current_user
+      @restaurant.update(restaurant_params)
+    else
+      flash[:notice] = "#{@restaurant.name} can only be edited by creator"
+    end
+    
+    redirect_to '/restaurants'
   end
 
   def update
