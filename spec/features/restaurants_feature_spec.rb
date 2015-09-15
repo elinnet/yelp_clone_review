@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'byebug'
+require 'helpers'  #why does require the helper method not work
 
 feature 'restaurants' do
 
@@ -27,10 +28,7 @@ feature 'restaurants' do
 
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
       login_as(user, :scope => :user)
-      visit '/restaurants'
-      click_link 'Add a restaurant'
-      fill_in 'Name', with: 'KFC'
-      click_button 'Create Restaurant'
+      restaurant_add
       expect(page).to have_content 'KFC'
       expect(current_path).to eq '/restaurants'
     end
@@ -74,6 +72,7 @@ feature 'restaurants' do
       expect(page).to have_content 'Kentucky Fried Chicken'
       expect(current_path).to eq '/restaurants'
     end
+
   end
 
   context 'deleting restaurants' do
