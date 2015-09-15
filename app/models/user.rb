@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :restaurants
+  has_many :reviewed_restaurants, through: :reviews, source: :restaurant
+  has_many :reviews
+
+
 end
