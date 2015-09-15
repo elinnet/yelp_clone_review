@@ -5,7 +5,6 @@ feature 'restaurants' do
 
   let(:user) { FactoryGirl.create(:user) }
 
-
   context 'no restaurants have been added' do
     scenario 'should display a prompt to add a restaurant' do
       visit '/restaurants'
