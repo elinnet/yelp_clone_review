@@ -27,4 +27,14 @@ feature "Users can sign in and out" do
       expect(page).to have_link('Sign out')
     end
   end
+
+  context "only logged in users can create restaurants" do
+
+    it "is should return non-logged in users to index page" do
+      visit ('/')
+      click_link ('Add a restaurant')
+      expect(current_path).to eq '/users/sign_in'
+    end
+  end
+
 end

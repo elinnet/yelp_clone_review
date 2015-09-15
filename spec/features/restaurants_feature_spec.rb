@@ -23,6 +23,12 @@ feature 'restaurants' do
   end
 
   context 'create restaurants' do
+
+    before do
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+    end
+
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
       visit '/restaurants'
       click_link 'Add a restaurant'
@@ -34,6 +40,12 @@ feature 'restaurants' do
   end
 
   context 'an invalid restaurant' do
+
+    before do
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+    end
+
     it 'does not let you submit a name that is too short' do
       visit '/restaurants'
       click_link 'Add a restaurant'
@@ -58,6 +70,11 @@ feature 'restaurants' do
 
   context 'updating restaurants' do
 
+    before do
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+    end
+
     before {Restaurant.create(name:'KFC')}
 
     scenario 'lets a user update restaurant details' do
@@ -71,6 +88,11 @@ feature 'restaurants' do
   end
 
   context 'deleting restaurants' do
+
+    before do
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+    end
 
     before {Restaurant.create(name:'KFC')}
 
