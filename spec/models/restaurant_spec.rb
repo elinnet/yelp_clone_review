@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Restaurant, type: :model do
   it { is_expected.to have_many :reviews }
 
+  it { is_expected.to belong_to :user }
+
   it 'is not valid with a name of less than two characters' do
     restaurant = Restaurant.new(name: "k")
     expect(restaurant).to have(1).error_on(:name)

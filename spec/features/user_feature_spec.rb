@@ -37,4 +37,22 @@ feature "Users can sign in and out" do
     end
   end
 
+  context 'editing reviews' do
+
+      before do
+        user = FactoryGirl.create(:user)
+
+        login_as(user, :scope => :user)
+        Restaurant.create name: 'KFC', user_id: user.id
+        logout(:user)
+      end
+
+      scenario 'users can only edit restaurants/reviews they have created themselves' do
+        another_user = FactoryGirl.create(:user)
+        login_as(another_user, :scope => :user)
+        visit ('/')
+        click_link('Edit KFC')
+        expect(page).to have_content 'KFC can only be edited by creator'
+      end
+    end
 end

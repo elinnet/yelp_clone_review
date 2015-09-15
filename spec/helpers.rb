@@ -1,4 +1,4 @@
-module Helper
+module Helpers
 
   def restaurant_add
     visit '/restaurants'

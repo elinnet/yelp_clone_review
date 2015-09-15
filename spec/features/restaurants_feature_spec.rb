@@ -2,6 +2,11 @@ require 'rails_helper'
 require 'byebug'
 require 'helpers'  #why does require the helper method not work
 
+RSpec.configure do |c|
+  c.include Helpers
+end
+
+
 feature 'restaurants' do
 
   let(:user) { FactoryGirl.create(:user) }
@@ -72,7 +77,6 @@ feature 'restaurants' do
       expect(page).to have_content 'Kentucky Fried Chicken'
       expect(current_path).to eq '/restaurants'
     end
-
   end
 
   context 'deleting restaurants' do
