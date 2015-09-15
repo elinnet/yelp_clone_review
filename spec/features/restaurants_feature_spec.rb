@@ -2,6 +2,10 @@ require 'rails_helper'
 require 'byebug'
 
 feature 'restaurants' do
+
+  let(:user) { FactoryGirl.create(:user) }
+
+
   context 'no restaurants have been added' do
     scenario 'should display a prompt to add a restaurant' do
       visit '/restaurants'
@@ -11,9 +15,7 @@ feature 'restaurants' do
   end
 
   context 'restaurants have been added' do
-    before do
-      Restaurant.create(name: 'KFC')
-    end
+    before { Restaurant.create(name: 'KFC') }
 
     scenario 'display restaurants' do
       visit '/restaurants'
@@ -24,12 +26,8 @@ feature 'restaurants' do
 
   context 'create restaurants' do
 
-    before do
-      user = FactoryGirl.create(:user)
-      login_as(user, :scope => :user)
-    end
-
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
+      login_as(user, :scope => :user)
       visit '/restaurants'
       click_link 'Add a restaurant'
       fill_in 'Name', with: 'KFC'
@@ -41,12 +39,8 @@ feature 'restaurants' do
 
   context 'an invalid restaurant' do
 
-    before do
-      user = FactoryGirl.create(:user)
-      login_as(user, :scope => :user)
-    end
-
     it 'does not let you submit a name that is too short' do
+      login_as(user, :scope => :user)
       visit '/restaurants'
       click_link 'Add a restaurant'
       fill_in 'Name', with: 'K'
@@ -70,14 +64,10 @@ feature 'restaurants' do
 
   context 'updating restaurants' do
 
-    before do
-      user = FactoryGirl.create(:user)
-      login_as(user, :scope => :user)
-    end
-
     before {Restaurant.create(name:'KFC')}
 
     scenario 'lets a user update restaurant details' do
+      login_as(user, :scope => :user)
       visit '/restaurants'
       click_link 'Edit KFC'
       fill_in 'Name', with: 'Kentucky Fried Chicken'
@@ -89,14 +79,10 @@ feature 'restaurants' do
 
   context 'deleting restaurants' do
 
-    before do
-      user = FactoryGirl.create(:user)
-      login_as(user, :scope => :user)
-    end
-
     before {Restaurant.create(name:'KFC')}
 
     scenario 'lets a user delete a restaurant' do
+      login_as(user, :scope => :user)
       visit '/restaurants'
       click_link 'Delete KFC'
       expect(page).not_to have_content 'KFC'
