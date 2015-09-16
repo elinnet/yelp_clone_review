@@ -1,5 +1,4 @@
 
-
 class RestaurantsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :show]
@@ -35,7 +34,7 @@ class RestaurantsController < ApplicationController
     else
       flash[:notice] = "#{@restaurant.name} can only be edited by creator"
     end
-    
+
     redirect_to '/restaurants'
   end
 
