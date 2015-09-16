@@ -37,5 +37,15 @@ feature "Users can sign in and out" do
     end
   end
 
-  
+  context 'creating reviews' do
+
+    scenario 'should only be able to create one review per restaurant' do
+      user = FactoryGirl.create(:user)
+      restaurant = FactoryGirl.create(:restaurant)
+      restaurant.reviews.create_with_user({thoughts: 'just ok', rating: 2},user)
+      login_as(user,:scope => :user)
+      add_review_to_restaurant
+      expect(page).to have_content 'You have already reviewed this restaurant'
+    end
+  end
 end
