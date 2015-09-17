@@ -4,6 +4,8 @@ require 'rails_helper'
 feature 'reviewing restaurants' do
   before {Restaurant.create name: 'KFC'}
   let(:user) { FactoryGirl.create(:user) }
+  let(:user2) { FactoryGirl.create(:user) }
+
 
     scenario 'only logged in users can add reviews' do
       visit '/restaurants'
@@ -22,23 +24,21 @@ feature 'reviewing restaurants' do
       login_as(user, :scope => :user)
       add_review_to_restaurant
       visit '/restaurants'
-      expect{ click_link 'Delete review' }.to change { Review.count }.by(-1)
+      expect{ click_link 'Delete review' }.to change { Review.count }.by(-1) 
       expect(current_path).to eq '/restaurants'
       expect(page).not_to have_content('so so')
     end
 
-
-
-
-
-    # scenario 'does not allow users to delete a review they have not authored' do
-    #
-    #   another_user = FactoryGirl.create(:user)
-    #   login_as(another_user, :scope => :user)
-    #   visit '/'
-    #   expect{ click_link 'Delete review' }.not_to change{ Review.count }
-    #   expect(current_path).to eq '/restaurants'
-    #   expect(page).to have_content('You are not the author of this review')
-    # end
+    scenario 'users only allowed to delete the reviews they have created' do
+      login_as(user, :scope => :user)
+      add_review_to_restaurant
+      click_link 'Sign out'
+      login_as(user2, :scope => :user)
+      visit '/restaurants'
+      click_link 'Delete review'
+      expect(current_path).to eq '/restaurants'
+      expect(page).to have_content('so so')
+      expect(page).to have_content('Only original creator of review can delete this review')
+    end
 
 end

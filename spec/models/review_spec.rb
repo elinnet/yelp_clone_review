@@ -10,4 +10,13 @@ describe Review, type: :model do
     expect(review).to have(1).error_on(:rating)
   end
 
+  it 'removed from database when restaurant deleted' do
+    restaurant = Restaurant.create(name: 'KFC')
+    review = restaurant.reviews.create(thoughts: 'so so', rating: 3)
+    restaurant.destroy
+    expect(Review.find_by(thoughts:'so so')).to eq nil
+  end
+
+
+
 end
