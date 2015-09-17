@@ -13,6 +13,7 @@
               <%= review.thoughts %>,
               <%= review.rating %>/5
             </li>
+            <p><%= link_to "Delete review", restaurant_review_path(restaurant,review), method: :delete %></p>
           <% end %>
           </ul>
         <% else %>

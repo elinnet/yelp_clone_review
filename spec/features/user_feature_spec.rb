@@ -48,4 +48,5 @@ feature "Users can sign in and out" do
       expect(page).to have_content 'You have already reviewed this restaurant'
     end
   end
+
 end
