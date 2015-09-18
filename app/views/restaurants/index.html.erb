@@ -19,6 +19,7 @@
         <% else %>
           <p>No reviews</p>
         <% end %>
+        <p>Average rating: <%= restaurant.average_rating.to_i %></p>
       <% end %>
     <% else %>
         <p>No restaurants yet</p>
