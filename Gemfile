@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 
+gem 'launchy', '~> 2.4.3'
+
 gem 'devise'
 
 gem "dynamic_form"
