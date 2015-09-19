@@ -51,7 +51,7 @@ feature 'reviewing restaurants' do
       leave_review('so so','3')
       login_as(user2, :scope => :user)
       leave_review('Great','5')
-      expect(page).to have_content('Average rating: 4')
+      expect(page).to have_content('Average rating: ★★★★☆')
     end
 
     def leave_review(thoughts, rating)
