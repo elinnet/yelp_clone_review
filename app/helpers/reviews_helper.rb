@@ -3,16 +3,10 @@ module ReviewsHelper
     # return rating unless rating.is_a?(Fixnum)
     # remainder = 5 - rating
     # '★' * rating + '☆'* remainder
-
-    if rating.is_a? (Fixnum)
-      remainder = 5 - rating
-      '★' * rating + '☆'* remainder
-    elsif rating.is_a? (Float)
+    return rating unless rating.respond_to?(:round)
       rating = rating.round
       remainder = 5 - rating
       '★' * rating + '☆'* remainder
-    else
-      rating
     end
-  end
+
 end
