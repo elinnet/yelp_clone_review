@@ -10,8 +10,4 @@
   </section>
 <% end %>
 
-<%= form_for @restaurant do |restaurant| %>
-  <%= restaurant.label :name %>
-  <%= restaurant.text_field :name %>
-  <%= restaurant.submit "Create Restaurant" %>
-<% end %>
+<%= render "form" %>
