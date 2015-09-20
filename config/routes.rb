@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "restaurants#index"
 
-  resources :restaurants do
-    resources :reviews
+  resources :restaurants, shallow: true do
+    resources :reviews do
+      resources :endorsements
+    end
   end
+end
 
 
 
@@ -63,4 +66,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
