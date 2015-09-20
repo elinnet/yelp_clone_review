@@ -33,9 +33,6 @@ gem 'pry-rails', :group => :development
 
 gem 'shoulda'
 
-
-
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -50,6 +47,8 @@ group :test do
   gem 'capybara'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development, :test do

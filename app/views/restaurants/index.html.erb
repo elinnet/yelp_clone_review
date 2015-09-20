@@ -12,6 +12,8 @@
             <li>
               <%= review.thoughts %>,
               <%= review.rating %>/5
+              <p><%= link_to "Endorse Review", review_endorsements_path(review) %></p>
+              </p>
               <p><%= pluralize review.endorsements.count, 'endorsement' %></p>
             </li>
             <p><%= link_to "Delete review", review_path(review), method: :delete %></p>
