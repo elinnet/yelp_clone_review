@@ -8,9 +8,9 @@ A Yelp clone that lets users view reviewed restaurants and create/edit new resta
 * Ruby On Rails (full stack, Web application framework)
 * Tested using RSpec (provides a behaviour driven development framework for the language, allowing to write application scenarios and test them.)
 * Shoulda (Ruby gem for testing)
-* Devise (Ruby gem which handles building a user model, routes for your users controller, and also OmniAuth (which handles those 'Log in with Facebook'-type buttons))
+* Devise (Ruby gem which handles building a user model, routes for your users controller
 * Poltergeist (headless browser for Capybara based on PhantomJS (scripted, headless browser used for automating web page interaction; provides a JavaScript API enabling automated navigation, screenshots, user behavior and assertions making it a common tool used to run browser-based unit tests in a headless system like a continuous integration environment))
-* OmniAuth - to be implemented (OmniAuth is a flexible Ruby authentication framework utilizing Rack middleware aimed to abstract away the difficulties of working with various types of authentication providers)
+
 
 
 ## How to run it
@@ -28,3 +28,8 @@ A Yelp clone that lets users view reviewed restaurants and create/edit new resta
 cd yelp_clone_review
 bundle install
 rspec
+
+## Further features/functions to add:
+* CSS styling
+* OmniAuth (authentication system which handles 'Log in with Facebook' feature)
+* Paperclip and Amazon Web Services feature for upload of photos
