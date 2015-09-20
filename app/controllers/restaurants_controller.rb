@@ -28,13 +28,10 @@ class RestaurantsController < ApplicationController
   def edit
     @restaurant = Restaurant.find(params[:id])
 
-    if @restaurant.user_id === current_user
-      @restaurant.update(restaurant_params)
-    else
+    if @restaurant.user_id != current_user.id
       flash[:notice] = "#{@restaurant.name} can only be edited by creator"
+      redirect_to '/restaurants'
     end
-
-    redirect_to '/restaurants'
   end
 
   def update
