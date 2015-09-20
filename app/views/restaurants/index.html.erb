@@ -12,9 +12,9 @@
             <li>
               <%= review.thoughts %>,
               <%= review.rating %>/5
-              <%= link_to "Endorse Review", 
+              <p><%= pluralize review.endorsements.count, 'endorsement' %></p>
             </li>
-            <p><%= link_to "Delete review", restaurant_review_path(restaurant,review), method: :delete %></p>
+            <p><%= link_to "Delete review", review_path(review), method: :delete %></p>
           <% end %>
           </ul>
         <% else %>
